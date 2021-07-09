@@ -26,6 +26,7 @@ git clone https://github.com/any_repo
 ```
 
 ### Step 4: Pre-training BERT model using TPU
+It might be more convenient to creat a bach file for the pre-training (just put the following code in the file and change the variable accordingly). 
 ```
 STORAGE_BUCKET=gs://subbert_file
 
