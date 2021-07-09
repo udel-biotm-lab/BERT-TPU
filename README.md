@@ -37,5 +37,10 @@ pretraining_file=$STORAGE_BUCKET/data/pre_training_data
 
 python3 run_pretraining.py  --input_file=${pretraining_file}.tfrecord  --output_dir=$output_dir  --do_train=True --do_eval=True --bert_config_file=$BERT_BASE_DIR/bert_config.json --init_checkpoint=${output_dir}/model.ckpt --train_batch_size=192  --max_seq_length=128 --max_predictions_per_seq=20 --num_train_steps=100000 --num_warmup_steps=10  --learning_rate=2e-5 --use_tpu=True --tpu_name=subbert
 ```
-### Step 5: Cleanup
+### Step 5: Copy the pre-trained BERT model to the local machine
+After the pre-training, we can copy the BERT file to local machine using the following command:
+```
+gsutil cp -r gs://subbert_file/file_name local_path
+```
+### Step 6: Cleanup
 Make sure you delete all resources: both the VM and the TPU instance. Otherwise, you will be charged for the resource until someone recall it.
