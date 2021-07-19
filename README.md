@@ -11,7 +11,7 @@ After creating the project, there will a unique id for it (Project ID, which wil
 ### Step 2: Create VM for TPU
 Click the button on the right top to activate the Google Cloud shell:
 ```
-ctpu up --project= project_id --zone=us-central1-b --tf-version=1.15 --name=subbert --tpu-size=v3-8 --preemptible
+ctpu up --project= project_id --zone=us-central1-b --tf-version=1.15.4 --name=subbert --tpu-size=v3-8 --preemptible
 ```
 During the creation of the VM, you will be asked to set a password about ssh, just set it and remember it.
 
@@ -25,8 +25,8 @@ ctpu status
 git clone https://github.com/any_repo
 ```
 
-### Step 4: Pre-training BERT model using TPU
-It might be more convenient to creat a bach file for the pre-training (just put the following code in the file and change the variable accordingly). 
+### Step 4: Pre-training/fine-tuning BERT model using TPU
+It might be more convenient to creat a bach file for the pre-training/fine-tuning (just put the following code in the file and change the variable accordingly). 
 ```
 STORAGE_BUCKET=gs://subbert_file
 
@@ -37,7 +37,7 @@ pretraining_file=$STORAGE_BUCKET/data/pre_training_data
 
 python3 run_pretraining.py  --input_file=${pretraining_file}.tfrecord  --output_dir=$output_dir  --do_train=True --do_eval=True --bert_config_file=$BERT_BASE_DIR/bert_config.json --init_checkpoint=${output_dir}/model.ckpt --train_batch_size=192  --max_seq_length=128 --max_predictions_per_seq=20 --num_train_steps=100000 --num_warmup_steps=10  --learning_rate=2e-5 --use_tpu=True --tpu_name=subbert
 ```
-### Step 5: Copy the pre-trained BERT model to the local machine
+### Step 5: Copy the pre-trained/fine-tuned BERT model to the local machine
 After the pre-training, we can copy the BERT file to local machine using the following command:
 ```
 gsutil cp -r gs://subbert_file/file_name local_path
