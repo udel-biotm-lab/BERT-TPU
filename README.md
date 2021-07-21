@@ -21,6 +21,7 @@ ctpu status
 ```
 
 ### Step 3: Git Clone the code to the VM for TPU
+In your GitHub repository, it is better to include the bash file in Step 4.
 ```
 git clone https://github.com/any_repo
 ```
