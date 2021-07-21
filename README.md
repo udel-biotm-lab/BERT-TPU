@@ -1,4 +1,4 @@
-## A pipeline of pre-training BERT on Google TPU
+## A pipeline of pre-training/fine-tuning BERT on Google TPU
 
 ### Pre-request
 1. Pre-training Data
