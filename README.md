@@ -40,7 +40,7 @@ pretraining_file=$STORAGE_BUCKET/data/pre_training_data
 python3 run_pretraining.py  --input_file=${pretraining_file}.tfrecord  --output_dir=$output_dir  --do_train=True --do_eval=True --bert_config_file=$BERT_BASE_DIR/bert_config.json --init_checkpoint=${output_dir}/model.ckpt --train_batch_size=192  --max_seq_length=128 --max_predictions_per_seq=20 --num_train_steps=100000 --num_warmup_steps=10  --learning_rate=2e-5 --use_tpu=True --tpu_name=subbert
 ```
 ### Step 5: Copy the pre-trained/fine-tuned BERT model to the local machine
-After the pre-training/fine-tuning, we can copy the BERT file or the result files to local machine using the following command:
+After the pre-training/fine-tuning, we can copy the BERT file or the result files to local machine using the following command (you might need to install 'gsutil' first):
 ```
 gsutil cp -r gs://subbert_file/file_name local_path
 ```
