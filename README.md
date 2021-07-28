@@ -13,7 +13,7 @@ Click the button on the right top to activate the Google Cloud shell:
 ```
 ctpu up --project= project_id --zone=us-central1-b --tf-version=1.15.4 --name=subbert --tpu-size=v3-8 --preemptible
 ```
-During the creation of the VM, you will be asked to set a password about ssh, just set it and remember it.
+During the creation of the VM, you will be asked to set a passphrase about ssh, just set it and **please remember it** (otherwise you will not be able to access the VM instance).
 
 After the creation, just ssh into the VM and you can run the following command to check the status of your VM and TPU:
 ```
@@ -45,4 +45,4 @@ After the pre-training/fine-tuning, we can copy the BERT file or the result file
 gsutil cp -r gs://subbert_file/file_name local_path
 ```
 ### Step 6: Cleanup
-Make sure you delete all resources: both the VM and the TPU instance. Otherwise, you will be charged for the resource until someone recall it.
+Make sure you **delete all resources**: **both the VM and the TPU instance**. Otherwise, you will be charged for the resource until someone recall it.
